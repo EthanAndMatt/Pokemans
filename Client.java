@@ -5,10 +5,16 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import javax.swing.JOptionPane;
+
 
 public class Client {
 	
-	private static String[] nameAndPort = {"10.140.131.234", "6666"};
+	private static String IP = JOptionPane.showInputDialog("Enter an IP Address. "
+			+ "NOTE: TestBench IP = 10.140.131.236");
+	private static String Port = JOptionPane.showInputDialog("Enter a Port number.");
+	
+	private static String[] nameAndPort = {IP, Port};
 	
 	public static void main(String[] args) throws IOException {
 	        
