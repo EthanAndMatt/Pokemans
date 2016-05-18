@@ -2,11 +2,12 @@ package afwqafew;
 
 import java.net.*;
 import java.io.*;
+import javax.swing.JOptionPane;
  
 public class EchoServer {
     public static void main(String[] args) throws IOException {
          args= new String[1];
-         args[0]="6666";
+         args[0]= JOptionPane.showInputDialog("Enter a port for the server");
         if (args.length != 1) {
             System.err.println("Usage: java EchoServer <port number>");
             System.exit(1);
