@@ -1,0 +1,91 @@
+mport java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
+import javax.imageio.ImageIO;
+
+public class MainCharacter {
+	Image img;
+	int curX = 220;
+	int curY = 522;
+	int dx = 0;
+	int dy = 0;
+	double i = 0;
+	private boolean inAir;
+	private int vertVel;
+	private long startTime;
+	private int heightAtTimeOfJump;
+	
+	public MainCharacter(){
+		
+		URL url = getClass().getResource("Images/mario.png");
+		try {
+			img = ImageIO.read(url);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public Image getImg(){
+		return img;
+	}
+	
+	public int Location(){
+		return 0;
+	}
+	
+	public void move(){
+		this.curX+=dx;
+		this.curY+=dy;
+		
+		if(inAir){
+			calcY();
+		}
+		
+		
+		
+	}
+	
+	private void calcY() {
+		
+	}
+
+	public boolean direction(){
+		
+		return false;
+	}
+	public void jump(int jumpSpeed){
+		inAir = true;
+		vertVel = jumpSpeed;
+		startTime = System.currentTimeMillis();
+		heightAtTimeOfJump = curY;
+		
+	}
+	
+	public int getX(){
+		return curX;
+	}
+
+	public int getY() {
+		return curY;
+	}
+
+	public void faceRight() {
+		// TODO Auto-generated method stub
+		dx = 5;
+	}
+
+	public void faceLeft() {
+		// TODO Auto-generated method stub
+		dx = -5;
+	}
+
+	public void stop() {
+		// TODO Auto-generated method stub
+		dx=0;
+	}
+	
+	public void stopVert(){
+		dy=0;
+	}
+	
+}
