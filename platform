@@ -1,0 +1,15 @@
+import java.awt.Graphics;
+
+
+public class Platform {
+	private MarioPanel mp;
+	
+	public Platform(MarioPanel g){
+		
+	}
+	
+	public void draw(Graphics g) {
+		
+	}
+	
+}
