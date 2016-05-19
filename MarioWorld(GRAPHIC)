@@ -1,0 +1,193 @@
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
+
+import javax.imageio.ImageIO;
+import javax.swing.AbstractAction;
+import javax.swing.KeyStroke;
+import javax.swing.Timer;
+
+
+public class MarioWorld {
+
+	BufferedImage back;
+	BufferedImage back2;
+	private int BCKGRD_W ;
+	private int BCKGRD_W2;
+	private int backWide;
+	private int backHeight;
+	private Timer timer;
+	private int delay = 15;
+	Graphics gr;
+	MainCharacter mario = new MainCharacter();
+	List<Moveable> nonMarios = new ArrayList<Moveable>();
+	List<Platform> platforms = new ArrayList<Platform>();
+	private MarioPanel panel;
+	int backDir = 0;
+
+	void startTimer() {
+		timer = new Timer(delay, new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// what should happen each time the timer goes off?
+				moveBack();
+				moveStuff();
+				//checkCollisions();
+				//checkSpawnStuff();
+				panel.repaint();
+			}
+
+
+
+
+		});
+		timer.start();
+	}
+
+	void moveBack() {
+//		System.out.println(backWide);
+		if(backDir<=panel.WIDTH*-1){
+			backDir = 0;
+		}
+	}
+
+	void moveStuff() {
+		mario.move();		
+	}
+
+
+	public void setUpKeyBindings() {
+		panel.getInputMap().put(KeyStroke.getKeyStroke("pressed RIGHT"), "RightMove");
+		panel.getInputMap().put(KeyStroke.getKeyStroke("released RIGHT"), "Stop");
+		panel.getInputMap().put(KeyStroke.getKeyStroke("pressed LEFT"), "LeftMove");
+		panel.getInputMap().put(KeyStroke.getKeyStroke("released LEFT"), "Stop");
+		panel.getInputMap().put(KeyStroke.getKeyStroke((char)KeyEvent.VK_SPACE),"UpMove");
+		//this.getInputMap().put(KeyStroke.getKeyStroke("released UP"), "UpStop");
+
+
+		panel.getActionMap().put("RightMove",new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(mario.getX()<600)
+					mario.faceRight();
+				else{
+					mario.stop();
+					right();}
+				panel.repaint();
+			}
+
+		});
+		//		panel.getActionMap().put("RightStop",new AbstractAction() {
+		//			@Override
+		//			public void actionPerformed(ActionEvent e) {
+		//				world.stop();
+		//				panel.repaint();
+		//			}
+		//
+		//		});
+		panel.getActionMap().put("LeftMove",new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(mario.getX()>220)
+					mario.faceLeft();
+				//				else
+				//					world.left();
+				panel.repaint();
+			}
+
+		});
+		panel.getActionMap().put("Stop",new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(mario.getX()>220)
+					mario.stop();
+				//				else
+				//				world.left();
+				panel.repaint();
+			}
+
+		});
+		panel.getActionMap().put("UpStop",new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mario.stopVert();
+				panel.repaint();
+				System.out.println("I like dicks!");
+			}
+
+		});
+		panel.getActionMap().put("UpMove",new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panel.speed = 35;
+				//while(speed>=0){
+				//speed = mario.jump(speed);
+				//repaint();
+				//}
+				//mario.dy=0;
+				panel.repaint();
+				//Gotta keep throwing in the same number and repainting, must be a small number
+				//Have a mainCharacter double that is super small and it keeps getting divided, and once it
+				//gets casted to an int, its literally so small it throws itself into being a 0. That means
+				//it is now not moving up. If character is dropping from a place, they start with 0 and keep
+				//decreasing
+
+			}
+
+		});
+		panel.requestFocusInWindow();
+
+	}
+	private void setUpBackground() {
+		this.BCKGRD_W=back.getWidth(null);
+		this.BCKGRD_W2=back2.getWidth(null);
+		System.out.println(this.BCKGRD_W);
+		System.out.println(this.BCKGRD_W2);
+		backHeight = 0;
+		backWide = 0;
+		
+	}
+	private void drawBackground(Graphics g) {
+		int x = this.BCKGRD_W/2-panel.getWidth()/2;
+		double step = this.BCKGRD_W/360.0;
+		//x+=step*this.compassHeading;
+
+		//BufferedImage rightView = bkgrnd.getSubimage(x	, 0	, this.getWidth(), this.bkgrnd.getHeight());
+		g.drawImage(panel.back, panel.WIDTH-backDir, 0,panel.getWidth(), panel.getHeight(),null);
+		g.drawImage(panel.back, backDir, 0,panel.getWidth(), panel.getHeight(),null);
+		g.drawImage(panel.back, panel.WIDTH+backDir, 0, panel.getWidth(), panel.getHeight(),null);
+		g.drawImage(mario.getImg(), mario.getX(), mario.getY(), 194/4, 249/4, null);
+		//		System.out.println(backWide);
+		//		System.out.println(back2.getWidth());
+	}
+
+	public MarioWorld(MarioPanel marioPanel) {
+		panel = marioPanel;
+		this.startTimer();
+	}
+
+	public void draw(Graphics g) {
+		this.drawBackground(g);
+		System.out.println("drawing");
+
+	}
+
+	public void right() {
+		backDir-=10;
+	}
+
+	//	public void left() {
+	//		backDir+=10;
+	//	}
+
+
+}
