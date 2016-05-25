@@ -10,7 +10,7 @@ public class OpeningImages extends JFrame {
 	final static int WIDTH = 1200;
 	final static int HEIGHT = 674;
 	
-	
+	 
 	OpeningImages() {
 		setLayout(new FlowLayout());
 		
