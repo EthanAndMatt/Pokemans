@@ -1,0 +1,182 @@
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+
+import javax.swing.*;
+
+
+public class PokeBattle extends JFrame {
+	private ImageIcon image1;
+	private JLabel label1;
+	final static int WIDTH = 640;
+	final static int HEIGHT = 700;
+	final static int width = 640;
+	final static int height = 575;	
+	private JButton button;
+	int HealthPoints = 100;
+	static int RivalHealthPoints = 90;
+
+	
+	
+	
+	public PokeBattle() {
+		setLayout(new FlowLayout());
+		
+		image1 = new ImageIcon(getClass().getResource("PikachuPicture.jpg"));
+
+		label1 = new JLabel(image1);
+		add(label1);
+		
+		label1 = new JLabel("Health Points: "+ HealthPoints);
+		add(label1);
+		
+		button = new JButton("Scratch");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Scratch");
+
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Thunderbolt");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Thunderbolt");
+
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Shockwave");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Shockwave");
+
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Growl");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Growl");
+
+			}
+			
+		});
+		add(button);
+	}
+	
+	
+
+	public static void main (String args[]) {
+		PokeBattle gui =  new PokeBattle();
+		TheRival gui2 =  new TheRival();
+		gui.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		gui.setVisible(true);
+		gui.pack();
+		gui.setTitle("Your Pokemon!");
+		gui2.setPreferredSize(new Dimension(width, height));
+		gui2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		gui2.setVisible(true);
+		gui2.setLocation(640, 0);
+		gui2.pack();
+		gui2.setTitle("The Rival!");
+	}
+	
+	public static int randInt(int min, int max) {
+	    Random rand = new Random();
+	    int randomNum = rand.nextInt((max - min) + 1) + min;
+	    return randomNum;
+	}
+
+	
+	
+	
+	
+	
+	
+	public void buttonClicked(String text) {
+		if(text.equals("Growl")){
+			TheRival.label2.setText("Defense Weakened!" + " " + "Health Points: " + RivalHealthPoints);
+			checkHP();
+		}
+		else if(text.equals("Scratch")){
+			checkDefense();
+			RivalHealthPoints-= randInt(18,23);
+			TheRival.label2.setText("Health Points: " + RivalHealthPoints);
+			specialEffective("Scratch");
+			checkHP();
+}
+		else if(text.equals("Thunderbolt")){
+			checkDefense();
+			RivalHealthPoints-= randInt(28,38);
+			TheRival.label2.setText("Health Points: " + RivalHealthPoints);
+			specialEffective("Thunderbolt");
+			checkHP();
+		}
+		else if(text.equals("Shockwave")){
+			checkDefense();
+			RivalHealthPoints-= randInt(30,42);
+			TheRival.label2.setText("Health Points: " + RivalHealthPoints);	
+			specialEffective("Shockwave");
+			checkHP();
+		}
+		
+		
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+	private void checkDefense() {
+		if (TheRival.label2.getText().equals("Defense Weakened!" + " " + "Health Points: " + RivalHealthPoints))
+		RivalHealthPoints-= randInt(8,12);
+	}
+	
+	private void specialEffective(String text){
+		if (TheRival.label3.getText().equals("Type: Water") && (text.equals("Shockwave") || text.equals("Thunderbolt"))){
+				RivalHealthPoints-= randInt(12,15);
+				TheRival.label2.setText("It's Super Effective!" + " " + "Health Points: " + RivalHealthPoints);
+	}
+		
+	}		
+	
+	
+	private void checkHP(){
+		if (RivalHealthPoints == 0 || RivalHealthPoints < 0)
+			TheRival.label2.setText("Your Opponent Fainted!");
+	}
+
+
+}
