@@ -1,0 +1,31 @@
+
+import java.awt.*;
+import javax.swing.*;
+
+
+public class TheRival extends JFrame {
+	private ImageIcon image1;
+	public static JLabel label3;
+	public static JLabel label2;
+	public static JLabel label1;
+
+
+	final static int WIDTH = 575;
+	final static int HEIGHT = 500;
+	private static final int RivalHealthPoints = 90;
+	
+	
+	TheRival() {
+		setLayout(new FlowLayout());
+
+		image1 = new ImageIcon(getClass().getResource("PolywrathPicture (1).jpg"));
+		
+		label1 = new JLabel(image1);
+		add(label1);
+				
+		label2 = new JLabel("Health Points: "+ RivalHealthPoints);
+		add(label2);
+		
+		label3 = new JLabel("Type: Water");
+	}
+}
