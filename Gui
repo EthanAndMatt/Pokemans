@@ -1,31 +1,300 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
-public class Gui extends JFrame {
-	
+public class Gui extends JPanel {
+	JLabel Pokemon;
 	private JLabel label;
 	private JButton button;
+	int y = 0;
 	private JTextField textfield;
-	
+	String chosenPokeman = "";
 	public Gui (){
 		setLayout(new FlowLayout());
 		
-		label = new JLabel("Hi, I am a label");
+		label = new JLabel("Choose your Pokemon!");
 		add(label);
 		
-		textfield = new JTextField(15);
-		add(textfield);
+		button = new JButton("Charmander");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Charmander");
+			}
+			
+		});
+		add(button);
 		
-		button = new JButton("Click to Start");
+		button = new JButton("Growlithe");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Growlithe");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Vulpix");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Vulpix");
+			}
+			
+		});
 		add(button);
 	
+		button = new JButton("Squirtle");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Squirtle");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Psyduck");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Psyduck");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Magikarp");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Magikarp");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Slowpoke");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Slowpoke");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Abra");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Abra");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Sandshrew");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Sandshrew");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Diglette");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Diglette");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Cubone");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Cubone");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Geodude");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Geodude");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Onix");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Onix");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Machop");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Machop");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Mankey");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Mankey");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Meowth");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Meowth");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Ditto");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Ditto");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Eevee");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Eevee");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Jigglypuff");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Jigglypuff");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Pidgey");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Pidgey");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Grimer");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Grimer");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Koffing");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Koffing");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Gastly");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Gastly");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Zubat");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Zubat");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Bulbasaur");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Bulbasaur");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Oddish");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Oddish");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Pikachu");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Pikachu");
+			}
+			
+		});
+		add(button);
+		
+		button = new JButton("Magnemite");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				   buttonClicked("Magnemite");
+			}
+			
+		});
+		add(button);
+		
+		
+		Pokemon = new JLabel("Chosen Pokemon: " + y);
+		add(Pokemon);
 	}
 	
+	protected void buttonClicked(String text) {
+		y++;
+		if(y<6){
+			this.chosenPokeman+= text+", ";
+		}
+		else if (y==6){
+			this.chosenPokeman+=text+".";
+		}
+		else if (y>6){
+			y--;
+		}
+		Pokemon.setText("Chosen Pokemon: " + y+" - "+this.chosenPokeman);
+	}
+
 	public static void main (String args[]){
+		JFrame frame = new JFrame("Choose your Pokeman");
 		Gui gui = new Gui();
-		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		gui.setSize(50,50);
-		gui.setVisible(true);
-		gui.setTitle("First GUI");
+		frame.add(gui);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(600,300);
+		frame.setVisible(true);
+		frame.setTitle("Welcome Pokemon Trainer!");
 	}
 }
