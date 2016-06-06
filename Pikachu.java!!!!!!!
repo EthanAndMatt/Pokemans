@@ -1,0 +1,54 @@
+import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
+import javax.imageio.ImageIO;
+
+public class Pikachu {
+	
+	String type = "Electric";
+	Image img;
+	private Attack a1 = new Attack("Scratch", 20);
+	private Attack a2 = new Attack("Thunderbolt", 20);
+	private Attack a3 = new Attack("Thundershock", 0);
+	private Attack a4 = new Attack("Growl", 0);
+	int hp = 100;
+	
+	public Pikachu(){
+		//This establishes the image
+		URL url = getClass().getResource("Images/Pikachu.png");
+		try {
+			img = ImageIO.read(url);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+		//Now for the get methods!
+		
+	}
+public Image getImg(){
+		return img;
+	}
+	public int getHealth(){
+		return hp;
+	}
+	
+	public int getAttack(int n){
+		if(n == 1){
+			return a1.getDmg();
+		}
+		if(n == 2){
+			return a2.getDmg();
+		}
+		if(n == 3){
+			return a3.getDmg();
+		}
+		if(n == 4){
+			return a4.getDmg();
+		}
+		return 0;
+	}
+	
+	
+	public String getType(){
+		return type;
+	}
+}
