@@ -7,10 +7,14 @@ public class Pikachu {
 	
 	String type = "Electric";
 	Image img;
-	private Attack a1 = new Attack("Scratch", 20);
-	private Attack a2 = new Attack("Thunderbolt", 20);
-	private Attack a3 = new Attack("Thundershock", 0);
-	private Attack a4 = new Attack("Growl", 0);
+	//Scratch
+	private int a1 = 20;
+	//Thunderbolt
+	private int a2 = 20;
+	//Thundershock
+	private int a3 = 0;
+	//growl
+	private int a4 = 0;
 	int hp = 100;
 	
 	public Pikachu(){
@@ -38,7 +42,10 @@ public Image getImg(){
 		if(n == 2){
 			return a2.getDmg();
 		}
-		if(n == 3){
+		if(n == 3){//If you want to do more than just return damage, like with growl, then write code here:
+		//and here
+		//and here too
+		//and return the dmg anyway because its 0
 			return a3.getDmg();
 		}
 		if(n == 4){
